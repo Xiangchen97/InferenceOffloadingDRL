@@ -3,8 +3,9 @@ import numpy as np
 
 
 class TrainAnalysis(object):
-    def __init__(self):
+    def __init__(self, result_path):
         super(TrainAnalysis, self).__init__()
+        self.result_path = result_path
         self.avg_r_rec = []
         self.loss_p_rec = []
         self.loss_a_rec = []
@@ -37,7 +38,7 @@ class TrainAnalysis(object):
         plt.xlabel('learning_times')
         plt.ylabel('Loss')
         plt.title('assignment net loss records')
-        plt.savefig(RESULT_PATH + time_start_formatted + '/LossRecord')
+        plt.savefig(self.result_path + '/LossRecord')
         plt.show()
 
     def plot_reward(self):
@@ -48,7 +49,7 @@ class TrainAnalysis(object):
         plt.xlabel('episode', fontsize=self.fontsize_s)
         plt.ylabel('reward', fontsize=self.fontsize_s)
         plt.title('Reward Records', fontsize=self.fontsize_s)
-        plt.savefig(RESULT_PATH + time_start_formatted + '/RewardRecord')
+        plt.savefig(self.result_path + '/RewardRecord')
         plt.show()
 
     def plot_cost(self):
@@ -67,7 +68,7 @@ class TrainAnalysis(object):
         ax2.tick_params(axis='y', labelcolor='blue', labelsize=self.fontsize_s)
         ax2.legend(loc=(0.68, 0.59), fontsize=self.fontsize_s)
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/TotalCostRecord')
+        plt.savefig(self.result_path + '/TotalCostRecord')
         plt.show()
 
     def plot_time(self):
@@ -83,7 +84,7 @@ class TrainAnalysis(object):
         plt.ylabel('Time', fontsize=self.fontsize_l)
         plt.title('Time Consumption Breakdowns')
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/TimeBreakdowns')
+        plt.savefig(self.result_path + '/TimeBreakdowns')
         plt.show()
 
     def plot_energy(self):
@@ -98,7 +99,7 @@ class TrainAnalysis(object):
         plt.ylabel('Energy', fontsize=self.fontsize_l)
         plt.title('Energy Consumption Breakdowns')
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/EnergyBreakdowns')
+        plt.savefig(self.result_path + '/EnergyBreakdowns')
         plt.show()
 
     def plot_queue(self):
@@ -113,7 +114,7 @@ class TrainAnalysis(object):
         plt.ylabel('Time', fontsize=self.fontsize_l)
         plt.title('Queue Length Dynamic')
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/QueueLength')
+        plt.savefig(self.result_path + '/QueueLength')
         plt.show()
 
     def plot_hit_min_queue(self):
@@ -124,7 +125,7 @@ class TrainAnalysis(object):
         plt.xlabel('episode', fontsize=self.fontsize_s)
         plt.ylabel('Rate', fontsize=self.fontsize_s)
         plt.title('Shortest Queue Hit Rate', fontsize=self.fontsize_s)
-        plt.savefig(RESULT_PATH + time_start_formatted + '/HitMinQueue')
+        plt.savefig(self.result_path + '/HitMinQueue')
         plt.show()
 
     def plot_time_subplots(self):
@@ -159,7 +160,7 @@ class TrainAnalysis(object):
         plt.ylabel('Time', fontsize=self.fontsize_m)
         plt.title('Server Processing Time', fontsize=self.fontsize_m)
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/TimeSubplots')
+        plt.savefig(self.result_path + '/TimeSubplots')
         plt.show()
 
     def plot_energy_subplots(self):
@@ -187,5 +188,5 @@ class TrainAnalysis(object):
         plt.ylabel('Energy', fontsize=self.fontsize_m)
         plt.title('Server Processing Energy', fontsize=self.fontsize_m)
 
-        plt.savefig(RESULT_PATH + time_start_formatted + '/EnergySubplots')
+        plt.savefig(self.result_path + '/EnergySubplots')
         plt.show()

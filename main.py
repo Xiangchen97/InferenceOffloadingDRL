@@ -31,7 +31,7 @@ model_layer_num = dict_model['quantization_bitwidth'].shape[1]
 dqn = DQN(n_states_p=model_layer_num * 2 + 6, n_states_a=model_layer_num * 2 + 6, n_actions_p=model_layer_num,
           n_actions_a=SERVER_NUM, memory_capacity=MEMERY_CAPACITY, init_lr=LR, batch_size=BATCH_SIZE)
 env = InfEnv(n_device=5, n_server=SERVER_NUM, task_id=TASK_ID)
-ta = TrainAnalysis()
+ta = TrainAnalysis(result_path=RESULT_PATH + time_start_formatted)
 with open(RESULT_PATH + time_start_formatted + '/EnvSettings.pkl', 'wb') as file:
     pickle.dump(env, file)
 with open(RESULT_PATH + time_start_formatted + '/ModelSettings.pkl', 'wb') as file:
